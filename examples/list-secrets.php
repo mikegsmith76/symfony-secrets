@@ -1,12 +1,14 @@
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
+/**
+ * @var  \Mysof\Secrets\SodiumVault $vault
+ */
+require_once "common.php";
 
 $options = getopt("", [
     "reveal",
 ]);
 
-$vault = new \Mysof\Secrets\SodiumVault(__DIR__ . "/../secrets/dev");
 $secretList = $vault->list(isset($options["reveal"]));
 
 foreach ($secretList as $handle => $value) {

@@ -1,6 +1,9 @@
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
+/**
+ * @var  \Mysof\Secrets\SodiumVault $vault
+ */
+require_once "common.php";
 
 $options = getopt("", [
     "handle:",
@@ -12,5 +15,4 @@ if (empty($options["handle"]) || empty($options["value"])) {
     exit;
 }
 
-$vault = new \Mysof\Secrets\SodiumVault(__DIR__ . "/../secrets/dev");
 $vault->seal($options["handle"], $options["value"]);
